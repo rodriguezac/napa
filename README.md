@@ -36,7 +36,7 @@ npm run build
 - Análisis horizontal y vertical por partida y por cuenta, con gráficos.
 - Pro-forma I a plena capacidad y con capacidad ociosa; RNF y balance conciliado.
 - Sensibilidad: siete supuestos, escenarios originales y personalizado, gráficos de tornado de utilidad y RNF, comparación y cálculo de una variable a la vez.
-- Guardado en localStorage, respaldo/importación JSON, exportación CSV e impresión de vista.
+- Guardado en localStorage, respaldo/importación JSON, exportación por módulo a Excel y CSV, e impresión de vista.
 - Manual e informe del caso original disponibles en `public/docs/`, sin identificadores personales.
 
 ## Motor financiero
@@ -62,7 +62,7 @@ Fuente: PDF “Parcial N° 3 – Caso Industrias Plásticas Altamira v1”, pp. 
 
 El PDF enumera ocho módulos pese a referirse a siete. Menciona Pro-forma II sin presupuestos ni entregable detallado; se implementa la Pro-forma I solicitada. La segunda fecha de sustentación del PDF es incongruente y debe confirmarse con el docente. Entrega indicada en Teams: 30 de noviembre de 2026 antes de las 18:00, por todos los integrantes.
 
-Los documentos públicos describen el caso original y no cambian al editar cuentas. El CSV refleja datos actuales. Las versiones académicas con cédulas se entregan por separado y no se incluyen en este repositorio público.
+Los documentos públicos describen el caso original y no cambian al editar cuentas. Los archivos Excel y CSV reflejan los datos y supuestos actuales. Las versiones académicas con cédulas se entregan por separado y no se incluyen en este repositorio público.
 
 ## Arquitectura
 
@@ -81,3 +81,20 @@ npm run preview:static
 La carpeta generada es `dist-static/`. El workflow `.github/workflows/pages.yml` compila, prueba y publica automáticamente cada cambio a `main` en GitHub Pages. La ruta base es `/napa/`; para otro alojamiento puede cambiarse mediante la variable `NAPA_BASE_PATH` (por ejemplo `/` en Netlify). Los documentos de descarga usan la ruta base del alojamiento.
 
 Solo las versiones de los PDF sin cédulas se alojan públicamente. Los documentos académicos identificados se conservan por separado en la entrega local.
+
+
+## Exportaciones por módulo
+
+El botón principal descarga un archivo Excel real (`.xlsx`), con el nombre de la empresa, el reporte, período, moneda, formato contable, secciones, subtotales y gráficas nativas. El botón CSV descarga los datos del mismo módulo, sin prometer formato ni gráficas.
+
+- Panorama: libro integral de 18 hojas, incluidos todos los análisis y sus gráficas.
+- Resultados, Balance y Flujo: el estado comparativo correspondiente.
+- Razones: las 13 razones, referencias industriales y Du Pont.
+- Comparativo: la vista seleccionada (Resultados, Balance o Cuentas).
+- Proyección: resultados pro-forma, balance pro-forma y RNF a ambas capacidades, con los supuestos vigentes.
+- Escenarios: los tres escenarios originales, el escenario personalizado actual, sus supuestos y la sensibilidad de una variable a la vez.
+- Datos: cuentas del año seleccionado y datos complementarios.
+
+Las exportaciones son reportes de los resultados calculados al descargar. Los escenarios no constituyen un segundo simulador en Excel: para variar supuestos se utiliza ñapa y se vuelve a exportar. Los subtotales y las comparaciones del reporte conservan fórmulas de Excel. Las plantillas se crearon con Artifact Tool; el aplicativo actualiza celdas, resultados almacenados y cachés de las gráficas preservando sus estilos y vínculos.
+
+El acceso superior “Ayuda” organiza cuatro secciones: Cómo usar ñapa, Documentos, Criterios de cálculo y Equipo. La información del parcial se encuentra dentro de Equipo y no se mezcla con la navegación financiera.

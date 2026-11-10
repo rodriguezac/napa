@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "templates": {
+    "overview": {
+      "sheets": [
+        "Panorama",
+        "Resultados",
+        "Balance",
+        "Flujo de efectivo",
+        "Razones",
+        "Du Pont",
+        "Comparativo resultados",
+        "Comparativo balance",
+        "Comparativo cuentas",
+        "Proforma resultados",
+        "Proforma balance",
+        "Fondos requeridos",
+        "Escenarios",
+        "Supuestos escenarios",
+        "Impacto de variables",
+        "Cuentas 2024",
+        "Cuentas 2025",
+        "Datos complementarios"
+      ]
+    },
+    "income": {
+      "sheets": [
+        "Resultados"
+      ]
+    },
+    "balance": {
+      "sheets": [
+        "Balance"
+      ]
+    },
+    "cash": {
+      "sheets": [
+        "Flujo de efectivo"
+      ]
+    },
+    "ratios": {
+      "sheets": [
+        "Razones",
+        "Du Pont"
+      ]
+    },
+    "analysis-resultados": {
+      "sheets": [
+        "Comparativo resultados"
+      ]
+    },
+    "analysis-balance": {
+      "sheets": [
+        "Comparativo balance"
+      ]
+    },
+    "analysis-cuentas": {
+      "sheets": [
+        "Comparativo cuentas"
+      ]
+    },
+    "projection": {
+      "sheets": [
+        "Proforma resultados",
+        "Proforma balance",
+        "Fondos requeridos"
+      ]
+    },
+    "sensitivity": {
+      "sheets": [
+        "Escenarios",
+        "Supuestos escenarios",
+        "Impacto de variables"
+      ]
+    },
+    "data-2024": {
+      "sheets": [
+        "Cuentas 2024",
+        "Datos complementarios"
+      ]
+    },
+    "data-2025": {
+      "sheets": [
+        "Cuentas 2025",
+        "Datos complementarios"
+      ]
+    }
+  }
+}

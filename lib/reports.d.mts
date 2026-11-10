@@ -1,0 +1,11 @@
+export const REPORT_VERSION:number;
+export const exportLabels:Record<string,string>;
+export const assumptionLabels:Record<string,string>;
+export const FMT:Record<string,string>;
+export function buildReport(scope?:string,state?:any):any;
+export function csvText(report:any):string;
+export function col(n:number):string;
+export function cellValue(v:any):any;
+export function reportCells(s:any,generated:string):Record<string,any>;
+export function chartTables(s:any):any[];
+export function cellsWithCharts(s:any,generated:string):Record<string,any>;
