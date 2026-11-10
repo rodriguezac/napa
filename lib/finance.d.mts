@@ -1,0 +1,18 @@
+export type AccountRow = [string,string,string,'D'|'H',number,number];
+export type Inputs = Record<string,number>;
+export const accounts: AccountRow[];
+export const initialData: Record<number,Inputs>;
+export const defaults: Inputs;
+export const base23: Inputs;
+export const scenarios: Record<string,Inputs>;
+export const ratioDefinitions: [string,string,number,string,boolean,string][];
+export const incomeRows: string[][];
+export const balanceRows: string[][];
+export function statements(a:Inputs,extra?:Inputs): Record<string,number>;
+export function cashflow(a:Inputs,b:Inputs,extra?:Inputs): any;
+export function ratios(a:Inputs,extra?:Inputs): number[];
+export function status(value:number,i:number): 'good'|'warn'|'bad'|'na';
+export function project(a:Inputs,p:Inputs,extra?:Inputs,method?:string): Record<string,number>;
+export function historicalAssumptions(a:Inputs,extra?:Inputs): Inputs;
+export function tornado(a:Inputs,extra?:Inputs): {key:string,netLow:number,netHigh:number,rnfLow:number,rnfHigh:number,netImpact:number,rnfImpact:number}[];
+export function rowValue(row:string[],a:Inputs,s:Record<string,number>): number;
