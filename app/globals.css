@@ -11,3 +11,5 @@
 @media(max-width:800px){.four{grid-template-columns:repeat(2,minmax(0,1fr))}.overview-grid{grid-template-columns:1fr}.overview-grid .health-card{min-height:290px}.column-group>small{font-size:9px}.columns{padding:0 20px}.health-card>p{max-width:100%}.health-top{margin-bottom:16px}.health-top .badge{font-size:9px}.health-count{margin:20px 0}.health-count p{font-size:10px}.health-count strong{font-size:38px}}
 .tornado-chart{margin-bottom:20px}.tornado-chart svg{display:block;width:100%;height:auto;margin-top:18px}.tornado-title{font-size:12px;margin:2px 0 20px}.tornado-chart .legend{justify-content:flex-start;margin:0}.tornado-chart .legend>span{font-size:8px}
 @media(max-width:800px){.sidebar{visibility:hidden}.sidebar.open{visibility:visible}}
+/* Keep the guide and team controls reachable on short laptop windows. */
+.sidebar{overflow-y:auto;scrollbar-width:thin;scrollbar-color:#cdd8bd transparent}

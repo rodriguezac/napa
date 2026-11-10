@@ -1,5 +1,9 @@
 # ñapa · Finanzas claras
 
+**Aplicación pública:** https://rodriguezac.github.io/napa/
+
+El profesor puede abrirla sin cuenta de ChatGPT ni de GitHub.
+
 Aplicativo de análisis financiero para el caso académico **Industrias Plásticas Altamira, S.A.**, Administración Financiera 8402, Universidad Tecnológica de Panamá.
 
 Equipo: Angélica Rodríguez, Eliel García y Anllelina Varcasia.
@@ -13,7 +17,7 @@ npm ci
 npm run dev
 ```
 
-Abre la dirección Local que imprime el servidor (normalmente `http://localhost:5173`). No se necesitan cuentas, claves ni base de datos para el análisis financiero local. La publicación en Sites conserva su acceso privado.
+Abre la dirección Local que imprime el servidor (normalmente `http://localhost:5173`). No se necesitan cuentas, claves ni base de datos para el análisis financiero local. La versión pública principal se publica en GitHub Pages sin inicio de sesión.
 
 ```sh
 npm test
@@ -63,3 +67,17 @@ Los documentos públicos describen el caso original y no cambian al editar cuent
 ## Arquitectura
 
 React 19 + TypeScript, Vinext/Vite y Cloudflare Workers. El Worker sirve el aplicativo; los cálculos se ejecutan localmente en el navegador. Los iconos provienen de Lucide. Los estilos y gráficos SVG son propios. No se transmiten entradas contables a servicios externos.
+
+
+## Publicación gratuita y pública
+
+La aplicación también tiene una compilación estática de React. Usa el mismo motor financiero y las mismas pantallas de la versión Vinext, sin depender de autenticación ni de servicios del servidor.
+
+```sh
+npm run build:static
+npm run preview:static
+```
+
+La carpeta generada es `dist-static/`. El workflow `.github/workflows/pages.yml` compila, prueba y publica automáticamente cada cambio a `main` en GitHub Pages. La ruta base es `/napa/`; para otro alojamiento puede cambiarse mediante la variable `NAPA_BASE_PATH` (por ejemplo `/` en Netlify). Los documentos de descarga usan la ruta base del alojamiento.
+
+Solo las versiones de los PDF sin cédulas se alojan públicamente. Los documentos académicos identificados se conservan por separado en la entrega local.
