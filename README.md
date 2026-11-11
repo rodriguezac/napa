@@ -97,4 +97,4 @@ El botón principal descarga un archivo Excel real (`.xlsx`), con el nombre de l
 
 Las exportaciones son reportes de los resultados calculados al descargar. Los escenarios no constituyen un segundo simulador en Excel: para variar supuestos se utiliza ñapa y se vuelve a exportar. Los subtotales y las comparaciones del reporte conservan fórmulas de Excel. Las plantillas se crearon con Artifact Tool; el aplicativo actualiza celdas, resultados almacenados y cachés de las gráficas preservando sus estilos y vínculos.
 
-El acceso superior “Ayuda” organiza cuatro secciones: Cómo usar ñapa, Documentos, Criterios de cálculo y Equipo. La información del parcial se encuentra dentro de Equipo y no se mezcla con la navegación financiera.
+El acceso superior “Ayuda” organiza cuatro secciones: Cómo usar ñapa, Documentos, Criterios de cálculo y Equipo.
