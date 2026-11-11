@@ -97,4 +97,9 @@ El botón principal descarga un archivo Excel real (`.xlsx`), con el nombre de l
 
 Las exportaciones son reportes de los resultados calculados al descargar. Los escenarios no constituyen un segundo simulador en Excel: para variar supuestos se utiliza ñapa y se vuelve a exportar. Los subtotales y las comparaciones del reporte conservan fórmulas de Excel. Las plantillas se crearon con Artifact Tool; el aplicativo actualiza celdas, resultados almacenados y cachés de las gráficas preservando sus estilos y vínculos.
 
-El acceso superior “Ayuda” organiza cuatro secciones: Cómo usar ñapa, Documentos, Criterios de cálculo y Equipo.
+El acceso superior “Ayuda” organiza cinco secciones: Cómo usar ñapa, Documentos, Criterios de cálculo, Fórmulas y Equipo.
+
+
+## Biblioteca de fórmulas
+
+Ayuda → Fórmulas documenta las ecuaciones del motor financiero por módulo, con búsqueda, filtro, significado de variables y ejemplos tomados de las cuentas y supuestos actuales. Criterios de cálculo conserva las convenciones de presentación y enlaza a la biblioteca. La biblioteca explica el comportamiento implementado, incluida la rotación de inventarios sobre ventas netas, la ausencia de crédito fiscal por pérdidas y el RNF incremental ante cambios de cobranza e inventarios.
