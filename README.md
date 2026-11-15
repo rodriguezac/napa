@@ -29,12 +29,14 @@ npm run build
 
 - Menú principal, diseño adaptable, tarjetas explicativas y navegación para principiantes.
 - Captura de 50 cuentas en 2025 y valores comparables en 2024, filtros y búsqueda.
+- Clasificación por código y creación de cuentas con naturaleza automática y saldos en ambos años.
 - Datos complementarios editables: ISR, acciones, año comercial y ventas por producto.
 - Estado de resultados, balance con cierre de retenidas y flujo indirecto 2025/2024.
 - Balance y efectivo conciliados; diferencias visibles ante cambios incompatibles.
 - 13 razones, referencias industriales, semáforo y Du Pont.
 - Análisis horizontal y vertical por partida y por cuenta, con gráficos.
 - Pro-forma I a plena capacidad y con capacidad ociosa; RNF y balance conciliado.
+- Pro-forma II por presupuestos: ventas por producto, producción, costos PEPS, efectivo y balance proyectado, con 18 supuestos editables.
 - Sensibilidad: siete supuestos, escenarios originales y personalizado, gráficos de tornado de utilidad y RNF, comparación y cálculo de una variable a la vez.
 - Guardado en localStorage, respaldo/importación JSON, exportación por módulo a Excel y CSV, e impresión de vista.
 - Manual e informe del caso original disponibles en `public/docs/`, sin identificadores personales.
@@ -60,9 +62,11 @@ La balanza 2025 tiene Debe = Haber = $20,116,250. La utilidad calculada es $208,
 
 Fuente: PDF “Parcial N° 3 – Caso Industrias Plásticas Altamira v1”, pp. 2–8, y asignación en Teams. El PDF se menciona como fuente sin redistribuirlo.
 
-El PDF enumera ocho módulos pese a referirse a siete. Menciona Pro-forma II sin presupuestos ni entregable detallado; se implementa la Pro-forma I solicitada. La segunda fecha de sustentación del PDF es incongruente y debe confirmarse con el docente. Entrega indicada en Teams: 30 de noviembre de 2026 antes de las 18:00, por todos los integrantes.
+El PDF enumera ocho módulos pese a referirse a siete. Se implementan Pro-forma I por porcentaje de ventas y Pro-forma II por presupuestos. La segunda fecha de sustentación del PDF es incongruente y debe confirmarse con el docente. Entrega indicada en Teams: 30 de noviembre de 2026 antes de las 18:00, por todos los integrantes.
 
 Los documentos públicos describen el caso original y no cambian al editar cuentas. Los archivos Excel y CSV reflejan los datos y supuestos actuales. Las versiones académicas con cédulas se entregan por separado y no se incluyen en este repositorio público.
+
+El manual público tiene tres páginas e incluye clasificación, creación de cuentas y presupuestos. Para regenerarlo, ejecuta `python3 scripts/manual.py` con ReportLab instalado. El informe ejecutivo conserva el diagnóstico del caso original.
 
 ## Arquitectura
 
