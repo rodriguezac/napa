@@ -13,3 +13,21 @@ test('los estados conservan signos, totales, conciliaciones y fórmulas de Excel
 test('todos los formatos se pueden rellenar sin perder los gráficos ni las hojas',()=>{for(const [scope,ctx]of [['overview',{}],['income',{}],['balance',{}],['cash',{}],['ratios',{}],['analysis',{analysisKind:'Resultados'}],['analysis',{analysisKind:'Balance'}],['analysis',{analysisKind:'Cuentas'}],['projection',{}],['sensitivity',{}],['data',{year:2024}],['data',{year:2025}]]){const r=buildReport(scope,ctx),files=unzipSync(populateXlsx(template(r),r)),book=xml(files,'xl/workbook.xml');assert.equal((book.match(/<x:sheet /g)||[]).length,r.sheets.length);assert.match(book,/Print_Area/);for(const file of Object.keys(files).filter(n=>n.includes('/charts/')&&n.endsWith('.xml'))){const ch=xml(files,file);assert.match(ch,/<c:pt idx="0">/);assert.match(ch,/<c:min val=/);assert.doesNotMatch(ch,/Series 1/);}}});
 test('cambiar datos actualiza tanto las celdas como la caché nativa de las gráficas',()=>{const data=structuredClone(initialData);data[2025].grossSales+=100000;const r=buildReport('income',{data}),files=unzipSync(populateXlsx(template(r),r));const sheet=xml(files,'xl/worksheets/sheet1.xml'),chart=xml(files,Object.keys(files).find(n=>n.includes('/charts/')&&n.endsWith('.xml')));assert.match(sheet,/<x:v>283500<\/x:v>/);assert.match(chart,/<c:v>283500<\/c:v>/);assert.doesNotMatch(chart,/<c:v>208500<\/c:v>/);});
 test('escenario personalizado y crecimiento cero se conservan en la descarga',()=>{const r=buildReport('sensitivity',{params:{...scenarios.Optimista,days:40,growth:0},scenario:'Personalizado'}),s=r.sheets[1],v=s.rows.find(r=>r.key==='days');assert.equal(cellValue(v.values[3]),40);const files=unzipSync(populateXlsx(template(r),r));assert.match(xml(files,'xl/worksheets/sheet2.xml'),/<x:v>40<\/x:v>/);assert.match(xml(files,'xl/worksheets/sheet1.xml'),/Escenario al exportar: Personalizado/);});
+
+test('Excel y CSV incluyen las cuentas agregadas como filas y en las fórmulas de totales', async () => {
+  const {defaults} = await import('../lib/finance.mjs');
+  const extra = {...defaults, custom: [{id: 'c1', code: '1.1.06', name: 'Anticipos a empleados', nature: 'D'}, {id: 'c2', code: '2.2.03', name: 'Provisiones laborales', nature: 'H'}, {id: 'c3', code: '6.1.09', name: 'Papelería', nature: 'D'}]};
+  const data = {2024: {...initialData[2024], c1: 0, c2: 0, c3: 0}, 2025: {...initialData[2025], c1: 5000, c2: 5000, c3: 0}};
+  for (const scope of ['income', 'balance', 'cash', 'data', 'projection', 'overview']) {
+    const r = buildReport(scope, {data, extra, year: 2025});
+    const files = unzipSync(populateXlsx(template(r), r));   // no lanza "Celda de plantilla ausente"
+    if (scope === 'balance') {
+      const sheet = xml(files, 'xl/worksheets/sheet1.xml');
+      assert.ok(sheet.includes('1.1.06 Anticipos a empleados (agregada)'));
+      const row = r.sheets[0].rows.findIndex(x => x.key === 'c_c1') + 8;
+      assert.ok(r.sheets[0].rows.find(x => x.key === 'ca').values[1].f.includes('D' + row));
+      assert.ok(csvText(r).includes('Provisiones laborales'));
+    }
+    if (scope === 'projection') assert.ok(xml(files, 'xl/worksheets/sheet1.xml').includes('Pro-forma II'));
+  }
+});
