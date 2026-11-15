@@ -66,7 +66,7 @@ El PDF enumera ocho módulos pese a referirse a siete. Se implementan Pro-forma 
 
 Los documentos públicos describen el caso original y no cambian al editar cuentas. Los archivos Excel y CSV reflejan los datos y supuestos actuales. Las versiones académicas con cédulas se entregan por separado y no se incluyen en este repositorio público.
 
-El manual público tiene tres páginas e incluye clasificación, creación de cuentas y presupuestos. Para regenerarlo, ejecuta `python3 scripts/manual.py` con ReportLab instalado. El informe ejecutivo conserva el diagnóstico del caso original.
+El manual público tiene tres páginas e incluye clasificación, creación de cuentas y presupuestos. Para regenerarlo, ejecuta `python3 scripts/manual.py` con ReportLab instalado. El informe ejecutivo tiene seis páginas e incorpora la Pro-forma II, su préstamo requerido y una sensibilidad al aumento de materiales. Ambos PDF corresponden al caso original.
 
 ## Arquitectura
 
@@ -95,7 +95,7 @@ El botón principal descarga un archivo Excel real (`.xlsx`), con el nombre de l
 - Resultados, Balance y Flujo: el estado comparativo correspondiente.
 - Razones: las 13 razones, referencias industriales y Du Pont.
 - Comparativo: la vista seleccionada (Resultados, Balance o Cuentas).
-- Proyección: resultados pro-forma, balance pro-forma y RNF a ambas capacidades, con los supuestos vigentes.
+- Proyección y Presupuestos: resultados y balances de Pro-forma I y II, RNF a ambas capacidades y presupuesto de efectivo, con los supuestos vigentes.
 - Escenarios: los tres escenarios originales, el escenario personalizado actual, sus supuestos y la sensibilidad de una variable a la vez.
 - Datos: cuentas del año seleccionado y datos complementarios.
 

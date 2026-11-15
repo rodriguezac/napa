@@ -305,3 +305,8 @@ nav button{font-size:14px;color:var(--text-2)}
 .notice svg{color:#6fab23}
 .notice.warn{background:#fff;color:#343a40;border-color:#ed6545;box-shadow:0 4px 10px rgba(0,0,0,.05)}
 .notice.warn strong{color:#b23c1f}.notice.warn svg{color:#ed6545}
+
+/* Logo vectorial: el símbolo nunca depende de una fuente de emoji. */
+.brand-mark{display:inline-block;width:1em;height:1em;flex:none;color:var(--green);vertical-align:middle}
+.brand>.brand-mark{width:26px;height:26px;margin-left:9px;transform:translateY(-4px)}
+.footer-logo>.brand-mark{width:14px;height:14px;margin-left:5px}
