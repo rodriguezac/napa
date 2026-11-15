@@ -1,13 +1,16 @@
-"""Genera el manual público de tres páginas. Requiere reportlab."""
+"""Genera el manual público: portada y tres páginas de uso. Requiere reportlab."""
 from pathlib import Path
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.colors import HexColor
 from reportlab.lib.pagesizes import A4
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'public/docs/manual-napa.pdf'
 GREEN = HexColor('#487719')
+pdfmetrics.registerFont(TTFont('DaysOne', str(ROOT / 'scripts/assets/DaysOne.ttf')))
 styles = {
     'title': ParagraphStyle('title', fontName='Helvetica-Bold', fontSize=27, leading=32, textColor=GREEN, spaceAfter=12),
     'sub': ParagraphStyle('sub', fontName='Helvetica', fontSize=10, leading=15, textColor=HexColor('#52604b'), spaceAfter=16),
@@ -15,12 +18,74 @@ styles = {
     'body': ParagraphStyle('body', fontName='Helvetica', fontSize=10, leading=15, textColor=HexColor('#30372e'), spaceAfter=9),
     'small': ParagraphStyle('small', fontName='Helvetica', fontSize=8.5, leading=12, textColor=HexColor('#52604b'), spaceAfter=8),
 }
-story = []
+story = [Spacer(1, 1), PageBreak()]
 def p(text, style='body'):
     story.append(Paragraph(text, styles[style]))
 def h(text):
     p(text, 'h')
+def star(c, x, y, radius, color, width=1.5):
+    from math import sin, cos, pi
+    c.setStrokeColor(color)
+    c.setLineWidth(width)
+    for i in range(4):
+        a = i*pi/4
+        dx, dy = radius*cos(a), radius*sin(a)
+        c.line(x-dx, y-dy, x+dx, y+dy)
+
+def cover(c):
+    w, ht = A4
+    ink, lime = HexColor('#25292d'), HexColor('#6fab23')
+    c.setFillColor(HexColor('#f7f9f3'))
+    c.rect(0, 0, w, ht, fill=1, stroke=0)
+    star(c, w-24, ht-44, 155, HexColor('#e6efd9'), 1.3)
+    c.setFillColor(ink)
+    c.setFont('DaysOne', 72)
+    c.drawString(48, ht-150, 'ñapa')
+    logo_width = pdfmetrics.stringWidth('ñapa', 'DaysOne', 72)
+    star(c, 48+logo_width+32, ht-124, 20, lime, 1.7)
+    c.setFont('Helvetica', 12)
+    c.setFillColor(GREEN)
+    c.drawString(50, ht-184, 'Un extra de claridad para tus decisiones.')
+    c.setFillColor(lime)
+    c.roundRect(48, 498, 44, 5, 2.5, fill=1, stroke=0)
+    c.setFillColor(GREEN)
+    c.setFont('Helvetica-Bold', 9)
+    c.drawString(48, 470, 'GUÍA DEL APLICATIVO')
+    c.setFillColor(ink)
+    c.setFont('Helvetica-Bold', 40)
+    c.drawString(46, 415, 'Manual de uso')
+    c.setFont('Helvetica', 15)
+    c.drawString(48, 381, 'Industrias Plásticas Altamira, S.A.')
+    c.setFont('Helvetica', 11)
+    c.setFillColor(HexColor('#596252'))
+    c.drawString(48, 355, 'Análisis 2024-2025 y proyección 2026')
+    c.setFillColor(HexColor('#e9f1dd'))
+    c.roundRect(48, 263, w-96, 54, 14, fill=1, stroke=0)
+    c.setFillColor(GREEN)
+    c.setFont('Helvetica-Bold', 10)
+    c.drawString(65, 286, 'CUENTAS  /  ESTADOS  /  ANÁLISIS  /  PROYECCIONES')
+    c.setFillColor(ink)
+    c.setFont('Helvetica-Bold', 9)
+    c.drawString(48, 218, 'PREPARADO POR')
+    c.setFont('Helvetica', 11)
+    for y, name in [(195, 'Angélica Rodríguez'), (177, 'Eliel García'), (159, 'Anllelina Varcasia')]:
+        c.drawString(48, y, name)
+    c.setStrokeColor(HexColor('#d7e3c9'))
+    c.setLineWidth(.6)
+    c.line(48, 123, w-48, 123)
+    c.setFillColor(HexColor('#596252'))
+    c.setFont('Helvetica', 9)
+    c.drawString(48, 101, 'Universidad Tecnológica de Panamá · Administración Financiera')
+    c.drawString(48, 84, 'Caso académico · Noviembre 2026')
+    c.setFillColor(GREEN)
+    c.setFont('Helvetica', 9)
+    c.drawString(48, 48, 'rodriguezac.github.io/napa/')
+    c.linkURL('https://rodriguezac.github.io/napa/', (48, 44, 225, 60), relative=0)
+
 def page(c, doc):
+    if doc.page == 1:
+        cover(c)
+        return
     w, ht = A4
     c.setFillColor(GREEN)
     c.setFont('Helvetica-Bold', 11)
@@ -30,7 +95,7 @@ def page(c, doc):
     c.setFont('Helvetica', 8)
     c.setFillColor(HexColor('#52604b'))
     c.drawString(44, 29, 'UTP · Administración Financiera · Caso Altamira · 15 noviembre 2026')
-    c.drawRightString(w-44, 29, f'{doc.page} / 3')
+    c.drawRightString(w-44, 29, f'{doc.page} / 4')
 
 p('Manual de uso', 'title')
 p('Industrias Plásticas Altamira, S.A. · Análisis 2024-2025 y proyección 2026<br/>Equipo: Angélica Rodríguez, Eliel García y Anllelina Varcasia', 'sub')

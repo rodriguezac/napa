@@ -66,7 +66,7 @@ El PDF enumera ocho módulos pese a referirse a siete. Se implementan Pro-forma 
 
 Los documentos públicos describen el caso original y no cambian al editar cuentas. Los archivos Excel y CSV reflejan los datos y supuestos actuales. Las versiones académicas con cédulas se entregan por separado y no se incluyen en este repositorio público.
 
-El manual público tiene tres páginas e incluye clasificación, creación de cuentas y presupuestos. Para regenerarlo, ejecuta `python3 scripts/manual.py` con ReportLab instalado. El informe ejecutivo tiene seis páginas e incorpora la Pro-forma II, su préstamo requerido y una sensibilidad al aumento de materiales. Ambos PDF corresponden al caso original.
+El manual público tiene cuatro páginas (una portada con el logo y tres de contenido) e incluye clasificación, creación de cuentas y presupuestos. Para regenerarlo, ejecuta `python3 scripts/manual.py` con ReportLab instalado. El informe ejecutivo tiene seis páginas e incorpora la Pro-forma II, su préstamo requerido y una sensibilidad al aumento de materiales. Ambos PDF corresponden al caso original.
 
 ## Arquitectura
 
