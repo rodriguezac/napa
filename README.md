@@ -66,7 +66,7 @@ El PDF enumera ocho módulos pese a referirse a siete. Se implementan Pro-forma 
 
 Los documentos públicos describen el caso original y no cambian al editar cuentas. Los archivos Excel y CSV reflejan los datos y supuestos actuales. Las versiones académicas con cédulas se entregan por separado y no se incluyen en este repositorio público.
 
-El manual público tiene cuatro páginas (una portada con el logo y tres de contenido) e incluye clasificación, creación de cuentas y presupuestos. Para regenerarlo, ejecuta `python3 scripts/manual.py` con ReportLab instalado. El informe ejecutivo tiene seis páginas e incorpora la Pro-forma II, su préstamo requerido y una sensibilidad al aumento de materiales. Ambos PDF corresponden al caso original.
+El manual y el informe llevan la hoja de presentación de la UTP (logos, curso, parcial e integrantes) y usan Arial en negro: títulos de 14 pt, subtítulos y contenido de 12 pt, con títulos subrayados. El manual tiene portada y tres páginas de contenido; el informe, portada y cinco páginas (máximo del parcial: 3 y 6). Para regenerarlos ejecuta `python scripts/documentos.py` con ReportLab y la fuente Arial instalada (en Linux, indica la carpeta con `ARIAL_DIR`). La versión pública omite las cédulas; `python scripts/documentos.py --cedulas CARPETA` genera la versión de entrega con cédulas fuera del repositorio. Ambos PDF corresponden al caso original.
 
 ## Arquitectura
 
