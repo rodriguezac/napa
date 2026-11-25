@@ -310,3 +310,14 @@ nav button{font-size:14px;color:var(--text-2)}
 .brand-mark{display:inline-block;width:1em;height:1em;flex:none;color:var(--green);vertical-align:middle}
 .brand>.brand-mark{width:26px;height:26px;margin-left:9px;transform:translateY(-4px)}
 .footer-logo>.brand-mark{width:14px;height:14px;margin-left:5px}
+
+/* Módulo 7 e impacto de razones */
+.module-tag{display:inline-grid;place-items:center;width:24px;height:24px;margin-right:9px;border-radius:7px;background:#e9f1dd;color:#3f7a12;font-size:13px;font-weight:700;text-transform:uppercase;vertical-align:middle}
+.price-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:12px}
+.share-bar{display:flex;height:26px;border-radius:8px;overflow:hidden;margin:12px 0}
+.share-bar span{display:grid;place-items:center;color:#fff;font-size:12px;font-weight:600;white-space:nowrap}
+.subhead{margin:4px 0 8px;font-size:15px}
+.ranked{margin:4px 0 10px;padding-left:20px;font-size:14px;line-height:1.6}
+.muted-row td{color:#9aa1a7}
+.up,.down{display:inline-flex;align-items:center;gap:4px;font-weight:600}
+.up{color:#3f7a12}.down{color:#b23c1f}

@@ -27,3 +27,6 @@ export function compareCodes(a:string,b:string): number;
 export function customAccounts(extra:any): CustomAccount[];
 export function customValue(c:CustomAccount,a:Inputs): number;
 export function customTotals(a:Inputs,extra:any): Record<string,number>;
+export function complementary(data:Record<number,Inputs>,extra?:any,prices?:Record<number,number|null|undefined>): any;
+export type RatioImpact = {name:string,category:string,unit:string,before:number,after:number,delta:number,moved:boolean,better:boolean|null,statusBefore:string,statusAfter:string};
+export function ratioImpact(data:Record<number,Inputs>,extra:any,key:string,value:number,year?:number): RatioImpact[];

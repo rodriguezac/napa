@@ -35,7 +35,9 @@ npm run build
 - Balance y efectivo conciliados; diferencias visibles ante cambios incompatibles.
 - 13 razones, referencias industriales, semáforo y Du Pont.
 - Análisis horizontal y vertical por partida y por cuenta, con gráficos.
-- Pro-forma I a plena capacidad y con capacidad ociosa; RNF y balance conciliado.
+- Indicadores complementarios (módulo 7 de la versión 3.1): escudo fiscal, costos después de ISR, valor en libros por acción y P/U, ventas por producto, utilidad frente a flujo, Du Pont descompuesto y costo de la política de crédito.
+- Prueba en vivo: cambia una cuenta y muestra qué razones suben o bajan y si mejoran o empeoran (regla de la sustentación).
+- Las pantallas de proyección 2026 (capítulo 4) se retiraron del menú porque la versión 3.1 del caso las eliminó.
 - Pro-forma II por presupuestos: ventas por producto, producción, costos PEPS, efectivo y balance proyectado, con 18 supuestos editables.
 - Sensibilidad: siete supuestos, escenarios originales y personalizado, gráficos de tornado de utilidad y RNF, comparación y cálculo de una variable a la vez.
 - Guardado en localStorage, respaldo/importación JSON, exportación por módulo a Excel y CSV, e impresión de vista.

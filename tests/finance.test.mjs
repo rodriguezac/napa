@@ -65,3 +65,16 @@ test('pro-forma II (presupuestos): PEPS, efectivo y balance cuadran', async () =
   // Un aumento en el costo de la resina baja la utilidad.
   assert.ok(g.budget(a, {...d, materialInflation: .1}, e).net < r.net);
 });
+
+test('módulo 7: indicadores complementarios del caso v3.1', async () => {
+ const {complementary, ratioImpact, initialData, defaults} = await import('../lib/finance.mjs');
+ const c = complementary(initialData, defaults), close = (x, y) => assert.ok(Math.abs(x - y) < 0.01, `${x} != ${y}`);
+ close(c.shield[2025].saving, 106500); close(c.shield[2025].netWithout, 528000); close(c.shield[2025].cfoWithout, 88000);
+ close(c.afterTax[0].after, 160500); close(c.afterTax[1].after, 117000);
+ close(c.perShare[2025].book, 17.50875); close(c.products.gap, 0); close(c.products.total, 9540000);
+ close(c.netVsCash[2025].difference, -14000); assert.deepEqual(c.netVsCash[2025].top.map(r => r.value), [-285000, -267000, 125000]);
+ close(c.dupont.effects.reduce((v, e) => v + e.value, 0), c.dupont.change);
+ close(c.credit[2025].tiedUp, 131125);
+ const moved = ratioImpact(initialData, defaults, 'interest', 300000).filter(r => r.moved).map(r => r.name);
+ assert.ok(moved.includes('Rotación del interés ganado') && !moved.includes('Razón circulante'));
+});
